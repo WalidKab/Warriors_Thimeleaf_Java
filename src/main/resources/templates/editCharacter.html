@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Mettre à jour le personnage</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Mettre à jour votre personnage</h1>
+
+<form th:action="@{/editCharacter} + '/' + ${id}"
+      th:object="${characterForm}" method="POST">
+    Nom:
+    <input type="text" th:field="*{name}"/>
+    <br/>
+    Type:
+    <input type="text" th:field="*{type}"/>
+    <br/>
+    <input type="submit" value="Créer"/>
+</form>
+</body>
+
+</html>
