@@ -13,13 +13,13 @@ import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class CharacterController {
-//    private static List<CharacterModel> characters = new ArrayList<CharacterModel>();
+    private static List<CharacterModel> characters = new ArrayList<CharacterModel>();
 
-//    static {
-//        characters.add(new CharacterModel(1, "Mage noir", "Magicien"));
-//        characters.add(new CharacterModel(2, "Mage blanc", "Magicien"));
-//        characters.add(new CharacterModel(3, "Guerrier nordique", "Guerrier"));
-//    }
+    static {
+        characters.add(new CharacterModel(1, "Mage noir", "Magicien"));
+        characters.add(new CharacterModel(2, "Mage blanc", "Magicien"));
+        characters.add(new CharacterModel(3, "Guerrier nordique", "Guerrier"));
+    }
 
      //Injectez (inject) via application.properties.
     @Value("${welcome.message}")
@@ -59,7 +59,7 @@ public class CharacterController {
                              @ModelAttribute("characterForm") CharacterForm characterForm) {
         List<CharacterModel> characters =  new RestTemplate().getForObject("http://localhost:8080/Character", List.class);
 
-        int id = characters.size()+1;
+        int id = characters.size();
         String name = characterForm.getName();
         String type = characterForm.getType();
 
